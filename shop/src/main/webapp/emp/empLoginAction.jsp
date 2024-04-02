@@ -28,16 +28,17 @@
 	String sql = "select emp_id empId from emp where active='on' and emp_id=? and emp_pw=password(?)";		
 	stmt = conn.prepareStatement(sql);
 	stmt.setString(1,empId);
+	stmt.setString(2,empPw);
 	rs = stmt.executeQuery();
 	
-	/* if(rs.next()){
+	if(rs.next()){
 		System.out.println("로그인 성공");
 		session.setAttribute("loginEmp", rs.getString("empId"));
 		response.sendRedirect("/shop/emp/empList.jsp");
 	}else{
 		System.out.println("로그인 실패");
 		response.sendRedirect("/shop/emp/empLoginForm.jsp");
-	}  */
+	}  
 %>
 <!DOCTYPE html>
 <html>
