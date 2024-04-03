@@ -5,8 +5,8 @@
 <!-- Controller Layer -->
 <%
 	//인증분기 :세션변수 이름 -> loginEmp
-	String loginEmp = (String)(session.getAttribute("loginEmp"));
-	System.out.println(loginEmp+"<--loginEmp");
+	/* String loginEmp = (String)(session.getAttribute("loginEmp"));
+	System.out.println(loginEmp+"<--loginEmp"); */
 	
 	if(session.getAttribute("loginEmp")== null){
 		response.sendRedirect("/shop/emp/empLoginForm.jsp");
@@ -76,8 +76,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>	
 </head>
 <body>
+	<!-- empMenu.jsp include :주체(서버) vs redirect(주체:클라이언트)-->
+	<!-- 주체가 서버이기 떄문에 include할때는 절대주소가 /shop/...시작하지 않는다... -->
+	<jsp:include page="/emp/inc/empMenu.jsp"></jsp:include> 
+
 	<div><a href="/shop/emp/empLogout.jsp">로그아웃</a></div>
 	<h1>사원목록</h1>
 	<table>
@@ -97,58 +103,70 @@
 			<td><%=(String)(m.get("empJob"))%></td>
 			<td><%=(String)(m.get("hireDate"))%></td>
 			<td>
+				<%
+					HashMap<String,Object> sm =(HashMap<String,Object>)(session.getAttribute("loginEmp"));
+						if((Integer)(sm.get("grade"))>0){
+				%>
 				<a href='modifyEmpActive.jsp?active=<%=(String)(m.get("active"))%>&empId=<%=(String)(m.get("empId"))%>'>>
-				<%=(String)(m.get("active"))%>
+					<%=(String)(m.get("active"))%>
 				</a>
+				<%
+					}
+				%>
 			</td>
 		</tr>
 		<%
 			}
 		%>
 	</table>
-	<%
-		if(currentPage > 1){
-	%>
-		<div class="page-item">
-			<a class ="page-link" href="./diaryList.jsp?currentPage=1"> << </a>
-		</div>
-		<div class="page-item">
-			<a class ="page-link" href="./diaryList.jsp?currentPage=<%=currentPage-1%>">이전</a>
-		</div>
-	<%		
-		} else{
-	%>
-		<div class="page-item disabled">
-			<a class ="page-link" href="./diaryList.jsp?currentPage=1"> << </a>
-		</div>	
-		<div class="page-item disabled">
-			<a class ="page-link" href="./diaryList.jsp?currentPage=<%=currentPage-1%>">이전</a>
-		</div>
-	<%
-		}
-	%>
-		
-		<div>
-			<span class="btn btn-outline-secondary">
-					<%=currentPage%> 
-			</span>
-		</div>
-		
-	<%		
-		
-		if(currentPage < lastPage) {
-	%>
-		<div class="page-item">
-			<a class ="page-link" href="./diaryList.jsp?currentPage=<%=currentPage+1%>">다음</a>
-		</div>
-		<div class="page-item">
-			<a class ="page-link" href="./diaryList.jsp?currentPage=<%=lastPage%>">>></a>
-		</div>
-		
-	<%		
-		}
-	%>
 	
+		<nav aria-label="Page navigation example">
+  		<ul class="pagination justify-content-center">
+  		
+			<%
+				if(currentPage > 1){
+			%>
+				<div class="page-item">
+					<a class ="page-link" href="./empList.jsp?currentPage=1"> << </a>
+				</div>
+				<div class="page-item">
+					<a class ="page-link" href="./empList.jsp?currentPage=<%=currentPage-1%>">이전</a>
+				</div>
+			<%		
+				} else{
+			%>
+				<div class="page-item disabled">
+					<a class ="page-link" href="./empList.jsp?currentPage=1"> << </a>
+				</div>	
+				<div class="page-item disabled">
+					<a class ="page-link" href="./empList.jsp?currentPage=<%=currentPage-1%>">이전</a>
+				</div>
+			<%
+				}
+			%>
+				
+				<div>
+					<span class="btn btn-outline-secondary">
+							<%=currentPage%> 
+					</span>
+				</div>
+				
+			<%		
+				
+				if(currentPage < lastPage) {
+			%>
+				<div class="page-item">
+					<a class ="page-link" href="./empList.jsp?currentPage=<%=currentPage+1%>">다음</a>
+				</div>
+				<div class="page-item">
+					<a class ="page-link" href="./empList.jsp?currentPage=<%=lastPage%>">>></a>
+				</div>
+				
+			<%		
+				}
+			%>
+		</ul>
+		</nav>
 		
 </body>
 </html>

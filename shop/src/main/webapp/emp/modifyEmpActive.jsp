@@ -1,17 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %>
-<%@ page import="java.util.*"%>
+<%@ page import="java.net.*"%>
 <%
 	String empId = request.getParameter("empId");
 	String active = request.getParameter("active");
 	System.out.println(empId+"<--empId");
 	System.out.println(active+"<--active");
 	
-	if(active.equals("ON")){
-		active="OFF";
-	} else{
-		active="ON";
-	}
 	
 	Class.forName("org.mariadb.jdbc.Driver");
 	ResultSet rs = null;
@@ -26,6 +21,18 @@
 	rs = stmt.executeQuery();
 	System.out.println(stmt);
 	
+	
+	if(active.equals("ON")){
+		active="OFF";
+		stmt.setString(1,active);
+		stmt.setString(2,empId);
+		int row = stmt.executeUpdate();
+	} else{
+		active="ON";
+		stmt.setString(1,active);
+		stmt.setString(2,empId);
+		int row = stmt.executeUpdate();
+	}
 	
 	response.sendRedirect("/shop/emp/empList.jsp");
 %>

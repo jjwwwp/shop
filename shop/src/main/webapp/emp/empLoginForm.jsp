@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	//인증분기 :세션변수 이름 -> loginEmp
-	String loginEmp = (String)(session.getAttribute("loginEmp"));
-	System.out.println(loginEmp+"<--loginEmp");
+	/* String loginEmp = (String)(session.getAttribute("loginEmp"));
+	System.out.println(loginEmp+"<--loginEmp"); */
 	
 	if(session.getAttribute("loginEmp")!= null){
 		response.sendRedirect("/shop/emp/empList.jsp");
@@ -20,9 +20,9 @@
 	<form method="post" action="/shop/emp/empLoginAction.jsp">
 	<div>
 		<div>empId:</div>
-		<input type="text" name="empId">
+		<input type="text" name="empId" value="admin">
 		<div>empPw:</div>
-		<input type="text" name="empPw">
+		<input type="text" name="empPw" value="1234">
 	</div><br>
 		<button type="submit">로그인</button>	
 	</form>
