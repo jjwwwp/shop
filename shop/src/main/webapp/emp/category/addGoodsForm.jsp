@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %>
 <%@ page import="java.util.*"%>
+<%@ page import="java.net.*"%>
 <%
 	//인증분기: 세션변수 이름 -loginEmp
 	if(session.getAttribute("loginEmp")==null){
@@ -40,7 +41,8 @@
 	</div>
 	
 	<h1>상품등록</h1>
-	<form method="post" action="/shop/emp/addGoodsAction.jsp">
+	<form method="post" action="/shop/emp/addGoodsAction.jsp"
+				enctype="multipart/form-data">
 		<div>
 			category: 
 			<select name="category">
@@ -58,6 +60,10 @@
 		<div>
 			goodsTitle:
 			<input type="text" name="goodsTitle">
+		</div>
+		<div>
+			goodsImage:
+			<input type="file" name="goodsImg">
 		</div>
 		<div>
 			goodsPrice:
