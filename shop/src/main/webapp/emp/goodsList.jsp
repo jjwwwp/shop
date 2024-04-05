@@ -111,14 +111,13 @@
 	</div>
 	
 	<div>
-		<a href="/shop/emp/addGoodsForm.jsp">상품등록</a>
-	</div>	 
-
 	<!-- 서브메뉴 카테고리별 상품리스트 -->
-	<div>
+		<div>
+		<a href="/shop/emp/addGoodsForm.jsp">상품등록</a>
+		</div>
 		<a href="/shop/emp/goodsList.jsp">전체</a>
 		<%
-			for(HashMap m : categoryList){
+			for(HashMap<String,Object> m : categoryList){
 		%>
 			<a href="/shop/emp/goodsList.jsp?category=<%=(String)(m.get("category"))%>">
 				<%=(String)(m.get("category"))%>
@@ -128,21 +127,23 @@
 			}
 		%>
 	</div>
-	<div>
-		<table>
+	
+	<!-- goods 목록출력 -->
+
+		<h3>상품목록</h3>
+
 			<%
-				for(HashMap sm: list){
+				for(HashMap<String,Object> sm: list){
 			%>
-			<tr>
-					<td><%=(String)(sm.get("category"))%></td>
-					<td><%=(String)(sm.get("goodsTitle"))%></td>
-					<td><%=(Integer)(sm.get("goodsPrice"))%></td>
-					<td><%=(Integer)(sm.get("goodsAmount"))%></td>
-			</tr>		
+		<table>
+			<tr><td><img src="/shop/emp/image/Hoodie.jpg" width="100px;" height="130px;"></td></tr>
+			<tr><th><%=(String)(sm.get("goodsTitle"))%></th></tr>
+			<tr><td><%=(Integer)(sm.get("goodsPrice"))%>원</td></tr>
+			<tr><td><%=(Integer)(sm.get("goodsAmount"))%>개</td></tr>
+		</table>
 			<%
 				}
 			%>		
-		</table>
-	</div>
+	
 </body>
 </html>

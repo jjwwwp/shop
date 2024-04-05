@@ -14,7 +14,7 @@
 	PreparedStatement stmt = null;
 	conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/shop", "root", "java1234");
 	
-	String sql = "UPDATE `shop`.`emp` SET `active`=? WHERE  `emp_id`=?";
+	String sql = "UPDATE emp set active=? where emp_id=?";
 	stmt = conn.prepareStatement(sql);
 	stmt.setString(1,active);
 	stmt.setString(2,empId);

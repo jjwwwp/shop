@@ -21,7 +21,7 @@
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 	}
 	int rowPerPage = 10;
-	int startRow = (currentPage-1)*rowPerPage;
+	
 	
 	
 	Class.forName("org.mariadb.jdbc.Driver");
@@ -42,6 +42,8 @@
 	if(totalRow % rowPerPage !=0){
 		lastPage = lastPage +1;
 	}
+	int startRow = (currentPage-1)*rowPerPage;
+	
 	
 %>
 <!-- Model Layer -->
