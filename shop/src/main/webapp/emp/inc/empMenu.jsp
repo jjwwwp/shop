@@ -8,6 +8,7 @@
 	<!-- category CRUD -->
 	<a href="/shop/emp/category/categoryList.jsp">카테고리관리</a>
 	<a href="/shop/emp/goodsList.jsp">상품관리</a>
+	<a href="/shop/emp/customer/customerList.jsp">고객 관리</a>
 	<span>
 		<!-- 개인정도 수정 -->
 		<a href="/shop/emp/empOne.jsp">

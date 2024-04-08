@@ -54,8 +54,8 @@
 	if(category==null){
 		sql3= "select category, goods_title goodsTitle, goods_content goodsContent, goods_price goodsPrice, goods_amount goodsAmount,filename from goods order by goods_title asc limit ?,?";
 		stmt3 = conn.prepareStatement(sql3);
-		 stmt3.setInt(1,startRow);
-		 stmt3.setInt(2,rowPerPage);
+		stmt3.setInt(1,startRow);
+		stmt3.setInt(2,rowPerPage);
 	} else{
 		 sql3 = "select category, goods_title goodsTitle, goods_content goodsContent, goods_price goodsPrice, goods_amount goodsAmount, filename from goods where category=? order by goods_title asc limit ?,?";
 		 stmt3 = conn.prepareStatement(sql3);
@@ -122,11 +122,11 @@
 	
 	<!-- 서브메뉴 카테고리별 상품리스트 -->
 		<div>
-		<a href="/shop/emp/addGoodsForm.jsp">상품등록</a>
+			<a href="/shop/emp/addGoodsForm.jsp">상품등록</a>
 		</div>
 		
 		<div>
-		<a href="/shop/emp/goodsList.jsp">전체</a>
+			<a href="/shop/emp/goodsList.jsp">전체</a>
 		</div>
 		<%
 			for(HashMap<String,Object> m : categoryList){
