@@ -34,7 +34,7 @@
 		int row = stmt.executeUpdate();
 	}
 	
-	response.sendRedirect("/shop/emp/empList.jsp");
+	response.sendRedirect("/shop/emp/empList.jsp?currentPage");
 %>
 <!DOCTYPE html>
 <html>
