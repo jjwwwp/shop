@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %>
 <%@ page import="java.util.*"%>
-<%@ page import="java.net.*"%>
-<!-- Controller Layer -->
+<%@ page import = "shop.dao.*" %>
 <%
 	//인증분기: 세션변수 이름 -loginEmp
 	if(session.getAttribute("loginEmp")==null){
@@ -103,6 +102,8 @@
 	}
 	//디버깅
 	//System.out.println(categoryList);
+	
+	
 %>
 <!-- View Layer -->
 <!DOCTYPE html>

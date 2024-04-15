@@ -1,4 +1,4 @@
-package shop;
+package shop.dao;
 
 public class Test {
 
