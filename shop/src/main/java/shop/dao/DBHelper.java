@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.sql.*;
 import java.util.Properties;
 
+//쿼리문 속 민감한 개인정보(id,pw) 노출을 막음
 public class DBHelper {
 	public static java.sql.Connection getConnection() throws Exception {
 		 Class.forName("org.mariadb.jdbc.Driver");
